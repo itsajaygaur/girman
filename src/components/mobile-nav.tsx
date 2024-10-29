@@ -19,7 +19,7 @@ export default function MobileSidebar() {
         <SheetContent side="right">
           <SheetHeader>
             <SheetTitle>
-                <img src="/girman-logo.png" width={180} height={62} alt="Girman Logo" />
+                <img className="max-sm:w-32" src="/girman-logo.png" width={180} height={62} alt="Girman Logo" />
             </SheetTitle>
           </SheetHeader>
           <SheetDescription>

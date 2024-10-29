@@ -2,6 +2,7 @@ import { navItems } from "@/constant/nav-items";
 import MobileSidebar from "./mobile-nav";
 import { useSearchContext } from "./search-context";
 import { Input } from "./ui/input";
+import { Search } from "lucide-react";
 
 export default function Navbar() {
   const { searchTerm, setSearchTerm } = useSearchContext();
@@ -15,9 +16,10 @@ export default function Navbar() {
 
   return (
     <nav className="shadow-lg  w-full bg-white">
-      <div className="flex items-center justify-between gap-4 p-4 max-w-[1080px] mx-auto">
+      <div className="flex items-center justify-between gap-4 py-3 px-4 sm:p-4 max-w-[1080px] mx-auto">
         <a href="/">
           <img
+            className="max-sm:w-32"
             src="/girman-logo.png"
             width={180}
             height={62}
@@ -27,13 +29,17 @@ export default function Navbar() {
         <MobileSidebar />
         <div className="hidden md:block">
           {searchTerm ? (
-            <form onSubmit={searchUser} className="h-full">
+            <form onSubmit={searchUser} className="h-full relative">
+               <Search
+                size={16}
+                className=" text-gray-600 absolute top-3 left-2"
+              />
               <Input
                 defaultValue={searchTerm}
                 name="search"
                 placeholder="Search"
                 size={52}
-                className="border-gray-300 bg-white rounded-lg"
+                className="border-gray-300 bg-white rounded-lg pl-8"
               />
             </form>
           ) : (

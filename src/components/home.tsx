@@ -21,14 +21,16 @@ export default function Home() {
 
   useEffect(() => {
     setFilterdUsers(
-      users.filter((user) => user.first_name.toLowerCase().includes(searchTerm))
+      users.filter((user) => Object.values(user).some((value) =>
+        String(value).toLowerCase().includes(searchTerm.toLowerCase())
+      ))
     );
   }, [searchTerm]);
 
   return (
     <>
       {!searchTerm ? (
-        <div className="max-w-[600px] mx-auto w-full px-4">
+        <div className="max-w-[600px] mx-auto w-full pt-16 md:pt-28">
           <img
             className="mb-12"
             src="girman-logo-white.svg"
@@ -36,22 +38,20 @@ export default function Home() {
             height={120}
             alt="Girman Logo"
           />
-          <div className="relative">
+            <form className="relative" action="" onSubmit={searchUser}>
             <Search
-              size="16"
+              size={16}
               className=" text-gray-600 absolute top-3 left-2"
             />
-            <form action="" onSubmit={searchUser}>
               <Input
                 name="search"
                 placeholder="Search"
                 className="border-gray-300 bg-white rounded-lg pl-8"
               />
             </form>
-          </div>
         </div>
       ) : filterdUsers.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full w-full px-6 lg:px-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full w-full sm:px-6 lg:px-14 pt-5 md:pt-20">
           {filterdUsers?.map((user, index) => {
             return (
               <Fragment key={index}>

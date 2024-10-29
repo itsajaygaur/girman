@@ -79,7 +79,7 @@ export default function UserCard({ user }: { user: User }) {
                 <p className="mb-4">Profile Image:</p>
                 <img
                   src="/dummy-profile-full.png"
-                  className="aspect-square object-cover"
+                  className="aspect-square object-cover max-sm:mx-auto"
                   width={207}
                   height={207}
                   alt={user.first_name}
